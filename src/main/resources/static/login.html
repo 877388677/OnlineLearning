@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Login</title>
+	<meta charset="UTF-8">
+	<title>Login</title>
 
-<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/vector.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/vector.js"></script>
 
 </head>
 <body>
 
-
 <div id="container">
 	<div id="output">
 		<div class="containerT">
-		
-		
-		<h1>无知在线学习平台</h1>
+			<h1>无知在线学习平台</h1>
 			<h1>用户登录</h1>
 			<form action="login" id="myform" class="form">
 				<input id="username" type="text" placeholder="用户名">
 				<input id="password" type="password" placeholder="密码">
+				<input placeholder="验证码"  type="text"  required="required" id="Yzm"  >
+				<input type = "button" id="code"  value="点我验证"  onclick="createCode()"/>
 				<button onclick="sub()" type="button" id="entry_btn">登录</button>
 				<div id="prompt" class="prompt"></div>
 			</form>
@@ -31,24 +30,46 @@
 </div>
 
 <script type="text/javascript">
-	function setCookie(c_name,value,expiredays){
-		var exdate=new Date()
-		exdate.setDate(exdate.getDate()+expiredays)
-		document.cookie=c_name+ "=" +escape(value)+((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
-	}
 
-	
+	var code ; //在全局定义验证码
+	//产生验证码
+	function createCode(){
+		code = "";
+		var codeLength = 4;//验证码的长度
+		var checkCode = document.getElementById("code");
+		var random = new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', 'S','T','U','V','W','X','Y','Z');//随机数
+		for(var i = 0; i < codeLength; i++) {//循环操作
+			var index = Math.floor(Math.random()*36);//取得随机数的索引（0~35）
+			code += random[index];//根据索引取得随机数加到code上
+		}
+		checkCode.value = code;//把code值赋给验证码
+	}
+	//校验验证码
+	document.getElementById("Yzm").addEventListener("change",validate);
+
+	function validate(){
+		var inputCode = document.getElementById("Yzm").value.toUpperCase(); //取得输入的验证码并转化为大写
+		if(inputCode.length <= 0) { //若输入的验证码长度为0
+			alert("请输入验证码！"); //则弹出请输入验证码
+			$("#Yzm").focus();
+			YZM = false;
+		}
+		else if(inputCode != code ) { //若输入的验证码与产生的验证码不一致时
+			alert("验证码输入错误！@_@"); //则弹出验证码输入错误
+			createCode();//刷新验证码
+			$("#Yzm").val("");//清空文本框
+			$("#Yzm").focus();//重新聚焦验证码框
+			YZM = false;
+		}
+		else { //输入正确时
+			$("#Yzm").blur();//绑定验证码输入正确时要做的事
+			YZM = true;
+
+		}
+	}
 	function sub(){								//登录函数
 		var username = $("#username").val();
 		var password = $("#password").val();
-		
-//		sessionStorage.setItem("user",username);
-		 if (username!=null && username!="")
-	    {
-			 setCookie('username',username,365);
-	    }
-		
-	
 		if (username == "" || password == "") {
 			alert('用户名或密码不能为空');
 			return;
@@ -74,19 +95,15 @@
 		})
 	}
 
-	
-	
-	
-	
-    $(function(){
-        Victor("container", "output");   //登录背景函数
-        $("#entry_name").focus();
-        $(document).keydown(function(event){
-            if(event.keyCode==13){
-                $("#entry_btn").click();
-            }
-        });
-    });
+	$(function(){
+		Victor("container", "output");   //登录背景函数
+		$("#entry_name").focus();
+		$(document).keydown(function(event){
+			if(event.keyCode==13){
+				$("#entry_btn").click();
+			}
+		});
+	});
 </script>
 <div style="text-align:center;">
 </div>
