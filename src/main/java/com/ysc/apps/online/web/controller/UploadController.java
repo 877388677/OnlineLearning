@@ -135,7 +135,7 @@ public class UploadController {
 				try {
 					String cgSubDir = ConstantByProperties.basePath;
 					String uuid = UUID.randomUUID().toString();
-					String fileSaveName = uuid + "." + fileName.split("\\.")[fileName.split("\\.").length - 1];
+					String fileSaveName = fileName;
 					String url = cgSubDir + fileSaveName;
 					Path pathtrue = f.toPath().resolveSibling(url);
 					File parentFile = pathtrue.toFile().getParentFile();

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+  <title>首页-在线学习平台</title>
+  <link rel="stylesheet" href="./res/layui/css/layui.css">
+  <link rel="stylesheet" href="./res/static/css/index.css">
+</head>
+<body>
+  <!-- nav部分 -->
+  <div class="nav index">
+    <div class="layui-container">
+      <!-- logo -->
+      <div class="nav-logo">
+        <a href="index.html">
+          <img src="./res/static/img/logo.png"  height="60" width="200" alt="在线学习平台">
+        </a>
+      </div>
+      <div class="nav-list">
+        <button>
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="layui-nav" lay-filter="">
+          <li class="layui-nav-item" style="margin:0 30px;"><a href="course.html">全部课程</a></li>
+          <li class="layui-nav-item" style="margin:0 30px;"><a href="notices.html">公告</a></li>
+          <li class="layui-nav-item" style="margin:0 30px;"><a href="teacher.html">名师堂</a></li>
+          <li class="layui-nav-item" style="margin:0 30px;"><a href="about.html">关于</a></li>
+          <li class="layui-nav-item" style="margin:0 30px;"><a href="login_register.html">Login&Register</a></li>
+          <li class="layui-nav-item" style="margin:0 10px;"><a href="login_admin.html">管理员登录</a></li>
+          <li class="layui-nav-item" style="margin:0 10px;"> 
+          	<span class="small ml-1 d-md-down-none" id="this" style="color: red"> </span>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- banner部分 -->
+  <div>
+    <div class="layui-carousel" id="banner">
+      <div carousel-item>
+        <div>
+          <img src="./res/static/img/banner1.jpg">
+          <div class="panel">
+            <p class="title">在线学习平台</p>
+            <p>远程学习体验</p>
+          </div>
+        </div>
+        <div>
+          <img src="./res/static/img/banner2.jpg">
+          <div class="panel">
+            <p class="title">在线学习平台</p>
+            <p>远程学习体验</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- main部分 -->
+  <div class="main-product">
+    <div class="layui-container">
+      <p class="title">专为在线教育研制的<span>远程课堂</span></p>
+      <div id="findAllCourse" class="layui-row layui-col-space25">
+ <!--  <div class="layui-col-sm6 layui-col-md3 ">
+          <div class="content">
+            <div><img src="./res/static/img/Big_icon2.png"></div>
+            <div>
+              <p class="label">CSS处理</p>
+              <p>从小屏逐步扩展到大屏，最终实现所有屏幕适配，适应移动互联潮流。</p>
+            </div>
+            <a href="javascript:;">查看产品 ></a>
+          </div>
+        </div>
+ --> 
+      </div>
+    </div>
+  </div>
+  <div class="main-service">
+    <div class="layui-container">
+      <p class="title">为用户提供完美的<span>专业课程</span></p>
+      <div class="layui-row layui-col-space25 layui-col-space80">
+        <div class="layui-col-sm6">
+          <div class="content">
+            <div class="content-left"><img src="./res/static/img/home_img3.jpg"></div>
+            <div class="content-right">
+              <p class="label">1 对 1 指导</p>
+              <span></span>
+              <p>更有多个包含不同主题的Web组件，可快速构建界面出色、体验优秀的跨屏页面，大幅提升开发效率。</p>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-sm6">
+          <div class="content">
+            <div class="content-left"><img src="./res/static/img/home_img4.jpg"></div>
+            <div class="content-right">
+              <p class="label">1 对 1 指导</p>
+              <span></span>
+              <p>更有多个包含不同主题的Web组件，可快速构建界面出色、体验优秀的跨屏页面，大幅提升开发效率。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="service-more"><a href="">查看更多</a></div>
+    </div>
+  </div>
+  <!-- footer部分 -->
+  <div class="footer">
+    <div class="layui-container">
+      <p class="footer-web">
+        <a href="javascript:;">合作伙伴</a>
+        <a href="javascript:;">企业画报</a>
+        <a href="javascript:;">JS网</a>
+        <a href="javascript:;">千图网</a>
+        <a href="javascript:;">昵图网</a>
+        <a href="javascript:;">素材网</a>
+        <a href="javascript:;">花瓣网</a>
+      </p>
+      <div class="layui-row footer-contact">
+        <div class="layui-col-sm2 layui-col-lg1"><img src="./res/static/img/erweima.jpg"></div>
+        <div class="layui-col-sm10 layui-col-lg11">
+          <div class="layui-row">
+            <div class="layui-col-sm6 layui-col-md8 layui-col-lg9">
+              <p class="contact-top"><i class="layui-icon layui-icon-cellphone"></i>&nbsp;400-8888888&nbsp;&nbsp;</p>
+              <p class="contact-bottom"><i class="layui-icon layui-icon-home"></i>&nbsp;877388677@qq.com</span></p>
+            </div>
+            <div class="layui-col-sm6 layui-col-md4 layui-col-lg3">
+              <p class="contact-top"><span class="right">该模板版权归 <a href="https://www.layui.com/" target="_blank">layui.com</a> 所有</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="./vendor/jquery/jquery.min.js"></script>
+<script src="./vendor/popper.js/popper.min.js"></script>
+<script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="./vendor/chart.js/chart.min.js"></script>
+<script src="./res/layui/layui.js"></script>
+<script type="text/javascript">
+
+	function setId(id){
+ 		setCookie("courseId",id,1000);
+ 	}
+	function setCookie(c_name,value,expiredays){
+		var exdate=new Date()
+		exdate.setDate(exdate.getDate()+expiredays)
+		document.cookie=c_name+ "=" +escape(value)+((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+	}
+	//Ajax方式请求后台数据 
+    function findall(){
+    	username=getCookie('username');
+    	console.log("username::"+username);
+	    $.ajax({
+               type: "GET",
+               url: "http://localhost:8080/course/findAllCourseVM",
+		       dataType:"json",
+		       success: function(data){ 	   
+		    	    console.log(data);		    
+		    	    var jsonObj = data;
+				    var html="";
+				    for(var item in  jsonObj.data){
+				    	var id=jsonObj.data[item].id;
+						var startTime = jsonObj.data[item].startTime;
+						var name = jsonObj.data[item].name;
+					    var description = jsonObj.data[item].description;
+					    html+="  <div class='layui-col-sm6 layui-col-md3'>";
+				        html+="  <div class='content'>"
+				        html+="  <div><img src='./res/static/img/Big_icon2.png'></div> <div style='height :100px'>"
+			            html+="  <p class='label'>"+name+"</p>"
+			            html+="  <p style='display: block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 100%;'>"+description+"</p></div>"
+			            html+="  <a onclick='setId("+id+");' href='test.html'>查看课程 ></a> </div>  </div>"
+				    } 
+				    var html1=username+"，你好" ;
+				    $("#this").html(html1);
+					$("#findAllCourse").html(html);
+               },
+			   error:function(){
+				   alert("error");
+			   }
+         });
+    }
+	
+    function getCookie(c_name)
+    {  
+     if (document.cookie.length>0)
+      {
+      c_start=document.cookie.indexOf(c_name + "=")
+      if (c_start!=-1)
+        { 
+        c_start=c_start + c_name.length+1 
+        c_end=document.cookie.indexOf(";",c_start)
+        if (c_end==-1) c_end=document.cookie.length
+        return unescape(document.cookie.substring(c_start,c_end))
+        } 
+      } 
+    return ""
+    }
+	
+	
+    function findid(){
+    	var user = getCookie('username');
+    	console.log("usern:"+username);
+
+    	$.ajax({
+    		type:"get",
+    		url:"http://localhost:8080/user/findAllUser",
+    		dataType:"json",
+    		data:{
+
+    		},
+    		success:function(data){
+    	//		var  id1 = 0;
+    			var jsonObj = data;
+    			console.log("data:"+jsonObj.message);
+    			for(var item in jsonObj.data){
+    				var id=jsonObj.data[item].id;
+    				var type=jsonObj.data[item].type;
+    				var username1=jsonObj.data[item].username;
+    				console.log("id:"+id+"::u1:"+username1+"=====u:"+user+"类型:"+type);
+    				if(user==username1){
+    					setCookie('userId',id,365);
+    					setCookie('userType',type,365);
+    				}
+    			}
+    		},
+    		error:function(data){
+    			console.log("error"+data.message);
+    		}
+    		
+    	});
+    }
+	
+	window.onload = function(){findall();findid();}
+</script>
+<script>
+  layui.config({
+    base: './res/static/js/' 
+  }).use('firm'); 
+</script>
+</body>
+</html>

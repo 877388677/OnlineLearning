@@ -1,0 +1,372 @@
+`<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="Bookmark" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico"/>
+
+    <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin"/>
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css"/>
+    <link rel="stylesheet" href="../vendor/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../vendor/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../css/stream-v1.css">
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <title>课程视频上传</title>
+</head>
+<body>
+<!-- 顶端导航栏 -->
+<header class="navbar-wrapper">
+    <div class="navbar navbar-fixed-top">
+        <div class="container-fluid cl"><a class="logo navbar-logo f-l mr-10 hidden-xs"
+                                           href="/aboutHui.shtml">无知在线学习平台</a> <a
+                class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a>
+            <span class="logo navbar-slogan f-l mr-10 hidden-xs">v3.0</span>
+            <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
+            <nav class="nav navbar-nav">
+                <ul class="cl">
+                    <li class="dropDown dropDown_hover"><a href="javascript:;" class="dropDown_A"><i
+                            class="Hui-iconfont">&#xe600;</i> 新增 <i class="Hui-iconfont">&#xe6d5;</i></a>
+                        <ul class="dropDown-menu menu radius box-shadow">
+                            <li><a href="javascript:;" onclick="article_add('添加公告','ysc-notices-add.html')"><i
+                                    class="Hui-iconfont">&#xe616;</i> 公告</a></li>
+
+                            <li><a href="javascript:;" onclick="picture_add('添加资讯','ysc-course-add.html')"><i
+                                    class="Hui-iconfont">&#xe613;</i> 课程</a></li>
+
+                            <li><a href="javascript:;" onclick="member_add('添加用户','ysc-student-add.html','','510')"><i
+                                    class="Hui-iconfont">&#xe60d;</i> 用户</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
+                <ul class="cl">
+                    <li>管理员</li>
+                    <li class="dropDown dropDown_hover"><a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+                        <ul class="dropDown-menu menu radius box-shadow">
+                            <li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
+                            <li><a href="login.html">退出登录</a></li>
+                        </ul>
+                    </li>
+                    <li id="Hui-msg"><a href="#" title="消息"><span class="badge badge-danger">1</span><i
+                            class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a></li>
+                    <li id="Hui-skin" class="dropDown right dropDown_hover"><a href="javascript:;" class="dropDown_A"
+                                                                               title="换肤"><i class="Hui-iconfont"
+                                                                                             style="font-size:18px">&#xe62a;</i></a>
+                        <ul class="dropDown-menu menu radius box-shadow">
+                            <li><a href="javascript:;" data-val="default" title="默认（黑色）">默认（黑色）</a></li>
+                            <li><a href="javascript:;" data-val="blue" title="蓝色">蓝色</a></li>
+                            <li><a href="javascript:;" data-val="green" title="绿色">绿色</a></li>
+                            <li><a href="javascript:;" data-val="red" title="红色">红色</a></li>
+                            <li><a href="javascript:;" data-val="yellow" title="黄色">黄色</a></li>
+                            <li><a href="javascript:;" data-val="orange" title="橙色">橙色</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+<!-- 侧方导航栏 -->
+<aside class="Hui-aside">
+
+    <div class="menu_dropdown bk_2">
+        <dl id="menu-article">
+            <dt><i class="Hui-iconfont">&#xe616;</i> 公告管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a href="ysc-notices.html" title="资讯管理">公告管理</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-picture">
+            <dt><i class="Hui-iconfont">&#xe613;</i> 课程管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a href="ysc-video.html" title="课程管理">课程管理</a></li>
+                    <li><a href="ysc-video-upload.html" title="视频上传">视频上传</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-product">
+            <dt><i class="Hui-iconfont">&#xe620;</i> 问题管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a href="ysc-question.html" title="问题管理">问题管理</a></li>
+                    <li><a href="ysc-answer.html" title="学生相关回答">学生相关回答</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-comments">
+            <dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a href="ysc-discuss.html" title="评论列表">评论列表</a></li>
+                    <li><a href="#" title="意见反馈">意见反馈</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-member">
+            <dt><i class="Hui-iconfont">&#xe60d;</i> 学生管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a href="ysc-student.html" title="会员列表">学生列表</a></li>
+                    <li><a href="#" title="浏览记录">浏览记录</a></li>
+                    <li><a href="#" title="下载记录">下载记录</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-admin">
+            <dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a href="ysc-admin.html" title="管理员列表">管理员列表</a></li>
+                    <li><a href="#" title="权限管理">权限管理</a></li>
+                </ul>
+            </dd>
+        </dl>
+
+        <dl id="menu-admin">
+            <dt><i class="Hui-iconfont">&#xe62d;</i> 教师管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+
+                    <li><a href="ysc-teacher.html" title="管理员列表">教师列表</a></li>
+                    <li><a href="#" title="权限管理"></a>权限管理</li>
+                </ul>
+            </dd>
+        </dl>
+    </div>
+</aside>
+<div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a>
+</div>
+<section class="Hui-article-box">
+    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页
+        <span class="c-gray en">&gt;</span>
+        视频管理
+        <span class="c-gray en">&gt;</span>
+        视频列表
+        <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
+           href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a>
+    </nav>
+    <div class="Hui-article">
+        <div class="layui-upload" style="margin-left: 15px;margin-top: 15px;width: 100%">
+            <button type="button" class="layui-btn layui-btn-normal margin-left" id="uploadFileList">选择多文件</button>
+            <div class="layui-upload-list" style="width: 100%">
+                <div class="container" style="width: 100%;min-width: 550px;">
+                    <div class="row clearfix">
+                        <div style="width: 100%;overflow: auto;max-height: 400px;">
+                            <table id="data_table" class="layui-table" lay-skin="line"
+                                   style="width: 100%;min-width: 500px;">
+                                <thead>
+                                <tr>
+                                    <th>文件名</th>
+                                    <th style="width: 40%">进度</th>
+                                    <th style="min-width: 60px">大小</th>
+                                    <th style="min-width: 70px">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody id="bootstrap-stream-container">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" style="width: 100%">
+                    <div class="row clearfix" style="width: 100%">
+                        <div style="width: 100%">
+                            <table style="margin-top: 10px;width: 100%" id="stream_total_progress_bar">
+                                <tr>
+                                    <th style="min-width: 500px;">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-success" role="progressbar"
+                                                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                                 style="width: 0%">
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <span class="stream_total_size"></span>
+                                        <span class="stream_total_percent"></span>
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="margin-left">
+                    <button type="button" class="layui-btn start" id="startUploadFileButton">
+                        <i class="layui-icon"></i>开始上传
+                    </button>
+                    <button type="button" class="layui-btn" id="canleUploadFileButton">
+                        <i class="layui-icon"></i>取消上传
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.page.js"></script>
+<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
+<script src="../vendor/popper.js/popper.min.js"></script>
+<script src="../js/carbon.js"></script>
+<script src="../js/stream-v1.js"></script>
+<script src="../js/layui.js"></script>
+
+<script type="text/javascript">
+    var config = {
+        enabled: true,
+        /** 是否启用文件选择，默认是true */
+        customered: true,
+        multipleFiles: true,
+        /** 是否允许同时选择多个文件，默认是false */
+        autoRemoveCompleted: false,
+        /** 是否自动移除已经上传完毕的文件，非自定义UI有效(customered:false)，默认是false */
+        autoUploading: false,
+        /** 当选择完文件是否自动上传，默认是true */
+        fileFieldName: "FileData",
+        /** 相当于指定<input type="file" name="FileData">，默认是FileData */
+        maxSize: 2147483648,
+        /** 当_t.bStreaming = false 时（也就是Flash上传时），2G就是最大的文件上传大小！所以一般需要 */
+        simLimit: 200,
+        /** 允许同时选择文件上传的个数（包含已经上传过的） */
+        //extFilters: [".ppt",".pptx",".doc",".docx",".xls",".xlsx",".pdf"], /** 默认是全部允许，即 [] */
+        browseFileId: "uploadFileList",
+        /** 文件选择的Dom Id，如果不指定，默认是i_select_files */
+        browseFileBtn: "",
+        /** 选择文件的按钮内容，非自定义UI有效(customered:false) */
+        filesQueueId: "i_stream_files_queue",
+        /** 文件上传进度显示框ID，非自定义UI有效(customered:false) */
+        filesQueueHeight: 450,
+        /** 文件上传进度显示框的高，非自定义UI有效(customered:false)，默认450px */
+        messagerId: "i_stream_message_container",
+        /** 消息框的Id，当没有自定义onXXX函数，系统会显示onXXX的部分提示信息，如果没有i_stream_message_container则不显示 */
+        uploadURL: "/uploadFile",
+        tokenURL: "/queryToken",
+        postVarsPerFile: {},
+        onSelect: function (files) {
+            console.log(files);
+
+        },
+        onMaxSizeExceed: function (file) {
+            $("#i_error_tips > span.text-message").append("文件[name=" + file.name + ", size=" + file.formatSize + "]超过文件大小限制‵" + file.formatLimitSize + "‵，将不会被上传！<br>");
+        },
+        onFileCountExceed: function (selected, limit) {
+            $("#i_error_tips > span.text-message").append("同时最多上传<strong>" + limit + "</strong>个文件，但是已选择<strong>" + selected + "</strong>个<br>");
+        },
+        onExtNameMismatch: function (info) {
+            $("#i_error_tips > span.text-message").append("<strong>" + info.name + "</strong>文件类型不匹配[<strong>" + info.filters.toString() + "</strong>]<br>");
+        },
+        onAddTask: function (file) {
+            var file = '<tr id="' + file.id + '" class="template-upload in">' +
+                '<td><span class="preview">' + file.name + '</span></td>' +
+                '<td>' +
+                '    <div> <span class="message-text" style="font-size: 13px"></span></div>' +
+                '    <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">' +
+                '			<div class="progress-bar progress-bar-success" title="" style="width: 0%;"></div>' +
+                '		</div>' +
+                '</td>' +
+                '<td><p class="size">' + file.formatSize + '</p>' +
+                '</td>' +
+                '<td><a><span class="glyphicon glyphicon-remove" onClick="javascript:_t.cancelOne(\'' + file.id + '\')">取消</span></a>' +
+                '</td></tr>';
+            $("#bootstrap-stream-container").append(file);
+        },
+        onUploadProgress: function (file) {
+            var $bar = $("#" + file.id).find("div.progress-bar");
+            $bar.css("width", file.percent + "%");
+            var $message = $("#" + file.id).find("span.message-text");
+            $message.text("已上传:" + file.formatLoaded + "/" + file.formatSize + "(" + file.percent + "%" + ") 速  度:" + file.formatSpeed);
+
+            var $total = $("#stream_total_progress_bar");
+            $total.find("div.progress-bar").css("width", file.totalPercent + "%");
+            $total.find("span.stream_total_size").html(file.formatTotalLoaded + "/" + file.formatTotalSize);
+            $total.find("span.stream_total_percent").html(file.totalPercent + "%");
+        },
+        onStop: function () {
+        },
+        onCancel: function (file) {
+            $("#" + file.id).remove();
+            var $total = $("#stream_total_progress_bar");
+            $total.find("div.progress-bar").css("width", file.totalPercent + "%");
+            $total.find("span.stream_total_size").text(file.formatTotalLoaded + "/" + file.formatTotalSize);
+            $total.find("span.stream_total_percent").text(file.totalPercent + "%");
+            //console && console.log("-------------onCancel-------------------End");
+        },
+        onCancelAll: function (numbers) {
+            $("#i_error_tips > span.text-message").append(numbers + " 个文件已被取消上传！！！");
+        },
+        onComplete: function (file) {
+            /** 100% percent */
+            var $bar = $("#" + file.id).find("div.progress-bar");
+            $bar.css("width", file.percent + "%");
+            var $message = $("#" + file.id).find("span.message-text");
+            $message.text("已上传:" + file.formatLoaded + "/" + file.formatSize + "(" + file.percent + "%" + ")");
+            /** remove the `cancel` button */
+            var $cancelBtn = $("#" + file.id).find("td:last > span");
+            $cancelBtn.remove();
+
+            /** modify the total progress bar */
+            var $total = $("#stream_total_progress_bar");
+            $total.find("div.progress-bar").css("width", file.totalPercent + "%");
+            $total.find("span.stream_total_size").text(file.formatTotalLoaded + "/" + file.formatTotalSize);
+            $total.find("span.stream_total_percent").text(file.totalPercent + "%");
+
+            //console && console.log("-------------onComplete-------------------End");
+        },
+        onQueueComplete: function (msg) {
+            $("#startUploadFileButton").html('<i class="layui-icon"></i>开始上传');
+            $("#startUploadFileButton").removeClass("stop").addClass("start");
+            $("#returnListPageButton").removeClass("layui-btn-disabled");
+            $("#returnListPageButton").prop("disabled", false);
+        },
+        onUploadError: function (status, msg) {
+            $("#i_error_tips > span.text-message").append(msg + ", 状态码:" + status);
+        }
+    };
+    var _t = new Stream(config);
+
+    function cancelOne(id) {
+        _t.cancelOne(id);
+    }
+
+    $("#startUploadFileButton").click(function () {
+        if ($(this).hasClass("start")) {
+            $(this).html('<i class="layui-icon"></i>暂停上传');
+            $(this).removeClass("start").addClass("stop");
+            $("#returnListPageButton").addClass("layui-btn-disabled");
+            $("#returnListPageButton").prop("disabled", true);
+            _t.upload();
+        } else {
+            $(this).html('<i class="layui-icon"></i>开始上传');
+            $(this).removeClass("stop").addClass("start");
+            $("#returnListPageButton").removeClass("layui-btn-disabled");
+            $("#returnListPageButton").prop("disabled", false);
+            _t.stop();
+        }
+    });
+
+    $("#canleUploadFileButton").click(function () {
+        _t.cancel();
+    });
+</script>
+</body>
+</html>

@@ -27,14 +27,8 @@ public class HomeworkQuestionVM {
 		this.question = question;
 	}
 
-<<<<<<< Updated upstream
 	public Long getChapterId() {
 		return chapterId;
-=======
-
-	public Long getChapter_id() {
-		return chapter_id;
->>>>>>> Stashed changes
 	}
 	public void setChapterId(Long chapterId) {
 		this.chapterId = chapterId;

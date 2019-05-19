@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+  <title>名师堂-在线学习平台</title>
+  <link rel="stylesheet" href="./res/layui/css/layui.css">
+  <link rel="stylesheet" href="./res/static/css/index.css">
+</head>
+<body>
+  <!-- nav部分 -->
+  <div class="nav index">
+    <div class="layui-container">
+      <!-- logo -->
+      <div class="nav-logo">
+        <a href="index.html">
+          <img src="./res/static/img/logo.png"  height="60" width="200" alt="在线学习平台">
+        </a>
+      </div>
+      <div class="nav-list">
+        <button>
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="layui-nav" lay-filter="">
+          <li class="layui-nav-item" style="margin:0 30px;"><a href="course.html">全部课程</a></li>
+          <li class="layui-nav-item" style="margin:0 30px;"><a href="notices.html">公告</a></li>
+          <li class="layui-nav-item" style="margin:0 30px;"><a href="teacher.html">名师堂</a></li>
+          <li class="layui-nav-item" style="margin:0 30px;"><a href="about.html">关于</a></li>
+          <li class="layui-nav-item" style="margin:0 30px;"><a href="login_register.html">Login&Register</a></li>
+          <li class="layui-nav-item" style="margin:0 10px;"><a href="login_admin.html">管理员登录</a></li>
+          <li class="layui-nav-item" style="margin:0 10px;"> 
+          	<span class="small ml-1 d-md-down-none" id="this" style="color: red"> </span>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="main-about">
+    <div class="layui-container">
+      <div class="layui-row">
+
+<table class="layui-table" lay-size="lg">
+  <colgroup>
+    <col width="150">
+    <col width="200">
+    <col>
+  </colgroup>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>姓名</th>
+      <th>性别</th>
+      <th>年龄</th>
+    </tr> 
+  </thead>
+  <tbody id="teacher">
+   
+  </tbody>
+</table>
+    
+      </div>
+    </div>
+  </div>
+<script src="./vendor/jquery/jquery.min.js"></script>
+<script src="./vendor/popper.js/popper.min.js"></script>
+<script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="./vendor/chart.js/chart.min.js"></script>  
+<script src="./res/layui/layui.js"></script>
+<script type="text/javascript">
+function setCookie(c_name,value,expiredays){
+	var exdate=new Date()
+	exdate.setDate(exdate.getDate()+expiredays)
+	document.cookie=c_name+ "=" +escape(value)+((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+}
+function getCookie(c_name)
+{  
+ if (document.cookie.length>0)
+  {
+  c_start=document.cookie.indexOf(c_name + "=")
+  if (c_start!=-1)
+    { 
+    c_start=c_start + c_name.length+1 
+    c_end=document.cookie.indexOf(";",c_start)
+    if (c_end==-1) c_end=document.cookie.length
+    return unescape(document.cookie.substring(c_start,c_end))
+    } 
+  } 
+return ""
+}
+function findall(){
+	 username=getCookie('username');
+   $.ajax({
+          type: "GET",
+          url: "http://localhost:8080/user/findAllUser",
+	       dataType:"json",
+	       success: function(data){
+	    	    var jsonObj = data;
+	    	    console.log(data);	  
+			    var html="";
+			    for(var item in jsonObj.data){
+			    	
+			    	var id=jsonObj.data[item].id;
+					var username = jsonObj.data[item].username;
+					var gender = jsonObj.data[item].gender;
+				    var age = jsonObj.data[item].age;
+				    var type = jsonObj.data[item].type;
+				    if(type==2){
+				    	   html+=" <tr>";
+						   html+=" 	   <td>"+id+"</td>";
+						   html+="     <td>"+username+"</td>";
+						   html+="     <td>"+gender+"</td>";
+						   html+="     <td>"+age+"</td>";
+						   html+="</tr>";
+				    }
+				 
+			    }
+			    var html1=username+"，你好" ;
+			    $("#this").html(html1);
+			    $("#teacher").html(html);
+          },
+		   error:function(){
+			   alert("error");
+		   }
+     });
+}
+window.onload=findall;
+
+</script>
+
+<script>
+  layui.config({
+    base: './res/static/js/' 
+  }).use('firm'); 
+</script>
+</body>
+</html>
